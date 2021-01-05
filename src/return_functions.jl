@@ -82,7 +82,7 @@ function return_accumulate(returns::DataFrame;
                 throw(ArgumentError(string("dateColumn: ", dateColumn, " not in DataFrame: ",vars)))
         end
         nVars = nVars-1
-        n = size(returns)[1]
+        n = size(returns,1)
         dc = Symbol(dateColumn)
 
         out = returns[:, vars]
@@ -103,9 +103,9 @@ function return_accumulate(returns::DataFrame;
                 out = rename(
                         combine(
                             groupby(out,byVars),
-                            [vars[i] => aggDiscreteReturns for i in 1:size(vars)[1]]
+                            [vars[i] => aggDiscreteReturns for i in 1:size(vars,1)]
                         ),
-                        Dict(Symbol(String(string(vars[i],"_aggDiscreteReturns"))) => vars[i] for i in 1:size(vars)[1])
+                        Dict(Symbol(String(string(vars[i],"_aggDiscreteReturns"))) => vars[i] for i in 1:size(vars,1))
                     )
         elseif uppercase(method) == "LOG"
                 out = rename(
@@ -113,7 +113,7 @@ function return_accumulate(returns::DataFrame;
                             groupby(out,byVars),
                             [vars[i] => sum for i in 1:size(vars)[1]]
                         ),
-                        Dict(Symbol(String(string(vars[i],"_sum"))) => vars[i] for i in 1:size(vars)[1])
+                        Dict(Symbol(String(string(vars[i],"_sum"))) => vars[i] for i in 1:size(vars,1))
                     )
         else
                 throw(ArgumentError(string("method: ", method, " must be in (\"LOG\",\"DISCRETE\")")))
