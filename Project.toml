@@ -2,3 +2,16 @@ name = "PortfolioAnalytics"
 uuid = "6cd0ba8a-106a-4b4b-93dd-c4fa5a3d897d"
 authors = ["Dominic Pazzula"]
 version = "0.1.0"
+
+[deps]
+DataFrames = "a93c6f00-e57d-5684-b7b6-d8193f3e46c0"
+DataFramesMeta = "1313f7d8-7da2-5740-9ea0-a2ca25f37964"
+Dates = "ade2ca70-3891-5945-98fb-dc099432e06a"
+LinearAlgebra = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
+LoopVectorization = "bdcacae8-1622-11e9-2a5c-532679323890"
+Statistics = "10745b16-79ce-11e8-11f9-7d13ad32a3b2"
+
+[compat]
+DataFrames = "0.22"
+DataFramesMeta = "0.6"
+LoopVectorization = "0.9"
